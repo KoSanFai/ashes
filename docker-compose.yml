@@ -1,0 +1,18 @@
+version: "3"
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    restart: always
+    hostname: "localhost"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8080'
+    ports:
+      - "8080:80"
+      - "443:443"
+      - "22:22"
+    volumes:
+      - "./gitlab/config:/etc/gitlab"
+      - "./gitlab/logs:/var/log/gitlab"
+      - "./gitlab/data:/var/opt/gitlab"
+# WLY5lvrBM0etAnOudOLjTl5UJFI+DID+J7Wmk1kBodg= gitlab密码
