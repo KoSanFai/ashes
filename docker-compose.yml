@@ -15,4 +15,3 @@ services:
       - "./gitlab/config:/etc/gitlab"
       - "./gitlab/logs:/var/log/gitlab"
       - "./gitlab/data:/var/opt/gitlab"
-# WLY5lvrBM0etAnOudOLjTl5UJFI+DID+J7Wmk1kBodg= gitlab密码
