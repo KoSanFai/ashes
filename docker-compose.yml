@@ -1,17 +1,26 @@
-version: "3"
+version: "3.8"
+
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
+    container_name: gitlab
     restart: always
-    hostname: "localhost"
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://localhost:8080'
     ports:
-      - "8080:80"
-      - "443:443"
-      - "22:22"
+      - "9980:80"
+      - "9922:22"
     volumes:
-      - "./gitlab/config:/etc/gitlab"
-      - "./gitlab/logs:/var/log/gitlab"
-      - "./gitlab/data:/var/opt/gitlab"
+      - "/Users/kosanfai/necs/gitlab-config:/etc/gitlab"
+      - "/Users/kosanfai/necs/gitlab-logs:/var/log/gitlab"
+      - "/Users/kosanfai/necs/gitlab-data:/var/opt/gitlab"
+
+  # jenkins:
+  #   image: jenkins/jenkins:lts
+  #   container_name: jenkins
+  #   restart: always
+  #   ports:
+  #     - "8081:8080"
+  #     - "50000:50000"
+  #   volumes:
+  #     - "/Users/kosanfai/necs/jenkins-data:/var/jenkins_home"
+  #   depends_on:
+  #     - gitlab
